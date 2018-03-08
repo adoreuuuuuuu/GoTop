@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>GoTop</title>
+
+    <style>
+    *{
+        margin: 0;
+        padding: 0;
+    }
+
+    .ct{
+        height: 1000px;
+        background: lightblue;
+    }
+
+    .go-top{
+        position: fixed;
+        bottom: 30px;
+        right: 30px;
+        height: 50px;
+        width: 50px;
+        background: #fff;
+        border: 2px solid;
+        border-radius: 3px;
+        text-align: center;
+        line-height: 25px;
+    }
+    </style>
+</head>
+<body>
+    <div class="ct"></div>
+    <script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
+    <script>
+        function GoTop(){
+            this.ct = $('html,body')
+            this.createNode()
+            this.target = $('.go-top')
+            this.bindEvent()
+        }
+
+        GoTop.prototype.createNode=function(){
+            var goTopHtml = "<button class='go-top'>GoTop</button>"
+            this.ct.append(goTopHtml)
+        }
+
+        GoTop.prototype.bindEvent=function(){
+            var ct = this.ct
+            this.target.click(function(){
+                ct.animate({scrollTop:0});
+            })
+        }
+
+        new GoTop()
+        
+    </script>
+</body>
+</html>
